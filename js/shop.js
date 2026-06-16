@@ -35,11 +35,45 @@ const PRODUCTS = [
 window.PRODUCTS = PRODUCTS;
 
 // ── Currency ────────────────────────────────────────────────
+const cachedUSD = parseFloat(localStorage.getItem('merchndice_rates_USD'));
+const cachedNGN = parseFloat(localStorage.getItem('merchndice_rates_NGN'));
+
 const CURRENCIES = {
   GBP: { symbol: '£', rate: 1,     code: 'GBP' },
-  USD: { symbol: '$', rate: 1.27,   code: 'USD' },
-  NGN: { symbol: '₦', rate: 1950,  code: 'NGN' },
+  USD: { symbol: '$', rate: cachedUSD || 1.27,   code: 'USD' },
+  NGN: { symbol: '₦', rate: cachedNGN || 1950,  code: 'NGN' },
 };
+
+async function fetchRates() {
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/GBP');
+    if (!res.ok) throw new Error('Failed to fetch exchange rates');
+    const data = await res.json();
+    if (data && data.rates) {
+      const usdRate = data.rates.USD;
+      const ngnRate = data.rates.NGN;
+      let changed = false;
+      if (usdRate && usdRate !== CURRENCIES.USD.rate) {
+        CURRENCIES.USD.rate = usdRate;
+        localStorage.setItem('merchndice_rates_USD', usdRate);
+        changed = true;
+      }
+      if (ngnRate && ngnRate !== CURRENCIES.NGN.rate) {
+        CURRENCIES.NGN.rate = ngnRate;
+        localStorage.setItem('merchndice_rates_NGN', ngnRate);
+        changed = true;
+      }
+      
+      if (changed) {
+        // Dispatch currency change event to trigger re-renders on the page
+        window.dispatchEvent(new CustomEvent('currencychange'));
+      }
+    }
+  } catch (err) {
+    console.error('Error fetching exchange rates:', err);
+  }
+}
+
 
 function getCurrentCurrency() {
   const code = localStorage.getItem('merchndice_currency') || 'GBP';
@@ -308,10 +342,13 @@ function initShopFilters() {
 
 // ── Init ────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  fetchRates();
   if (document.getElementById('productGrid')) {
     initShopFilters();
     updateCurrencySelector();
     renderProducts();
+  } else {
+    updateCurrencySelector();
   }
 });
 
