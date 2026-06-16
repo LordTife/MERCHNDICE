@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop all MERCHNDICE merch — hoodies, tees, tracksuits, bottoms, caps & accessories. Filter by category, size and colour.">
+  <title>Shop All — MERCHNDICE</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="grain">
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">FREE SHIPPING ON ORDERS OVER £50 · NEW DROP JUST LANDED</div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">MERCHN<span>DICE</span></a>
+      <nav class="navbar__nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?cat=new">New In</a>
+        <a href="shop.html?cat=sale">Sale</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="navbar__actions">
+        <div class="currency-switcher" style="display:flex;gap:2px;background:var(--color-surface);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--color-border);">
+          <button class="currency-btn active" data-currency="GBP" onclick="setCurrency('GBP')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">£</button>
+          <button class="currency-btn" data-currency="USD" onclick="setCurrency('USD')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">$</button>
+          <button class="currency-btn" data-currency="NGN" onclick="setCurrency('NGN')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">₦</button>
+        </div>
+        <button class="navbar__icon-btn" data-open-search aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="navbar__icon-btn" data-open-cart aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" style="display:none;">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop All</a>
+    <a href="shop.html?cat=new">New In</a>
+    <a href="shop.html?cat=sale">Sale</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Search Modal -->
+  <div class="modal-overlay" id="searchOverlay">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search for hoodies, tees, caps...">
+      </div>
+      <p class="search-suggestion-label">Popular Searches</p>
+      <div class="search-tags">
+        <span class="search-tag">Hoodies</span>
+        <span class="search-tag">Tracksuits</span>
+        <span class="search-tag">Graphic Tees</span>
+        <span class="search-tag">Caps</span>
+        <span class="search-tag">Sale</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ PAGE HERO ════════════ -->
+  <section class="page-hero" data-bg-text="SHOP">
+    <div class="container page-hero__inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>Shop All</span>
+      </div>
+      <h1 class="page-title">SHOP ALL</h1>
+    </div>
+  </section>
+
+  <!-- ════════════ SHOP LAYOUT ════════════ -->
+  <section class="section" style="padding-top:40px;">
+    <div class="container">
+      <div class="shop-layout">
+        <!-- Filter Sidebar -->
+        <aside class="filter-sidebar">
+          <div class="filter-sidebar__title">
+            Filters
+            <button class="filter-clear-btn" onclick="clearAllFilters()">Clear All</button>
+          </div>
+
+          <!-- Category -->
+          <div class="filter-group">
+            <div class="filter-group__label">Category <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            <div class="filter-options">
+              <label class="filter-option"><input type="checkbox" name="category" value="Hoodies"><span class="filter-checkbox"></span>Hoodies</label>
+              <label class="filter-option"><input type="checkbox" name="category" value="T-Shirts"><span class="filter-checkbox"></span>T-Shirts</label>
+              <label class="filter-option"><input type="checkbox" name="category" value="Sweatshirts"><span class="filter-checkbox"></span>Sweatshirts</label>
+              <label class="filter-option"><input type="checkbox" name="category" value="Tracksuits"><span class="filter-checkbox"></span>Tracksuits</label>
+              <label class="filter-option"><input type="checkbox" name="category" value="Bottoms"><span class="filter-checkbox"></span>Bottoms</label>
+              <label class="filter-option"><input type="checkbox" name="category" value="Outerwear"><span class="filter-checkbox"></span>Outerwear</label>
+              <label class="filter-option"><input type="checkbox" name="category" value="Accessories"><span class="filter-checkbox"></span>Accessories</label>
+            </div>
+          </div>
+
+          <!-- Size -->
+          <div class="filter-group">
+            <div class="filter-group__label">Size <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            <div class="size-pill-row">
+              <button class="size-pill" data-size="S">S</button>
+              <button class="size-pill" data-size="M">M</button>
+              <button class="size-pill" data-size="L">L</button>
+              <button class="size-pill" data-size="XL">XL</button>
+              <button class="size-pill" data-size="XXL">XXL</button>
+              <button class="size-pill" data-size="One Size">One Size</button>
+            </div>
+          </div>
+
+          <!-- Color -->
+          <div class="filter-group">
+            <div class="filter-group__label">Color <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            <div class="color-swatch-row">
+              <button class="color-swatch" data-color="Black" style="background:#111;" title="Black"></button>
+              <button class="color-swatch" data-color="White" style="background:#f5f5f5;" title="White"></button>
+              <button class="color-swatch" data-color="Grey" style="background:#888;" title="Grey"></button>
+              <button class="color-swatch" data-color="Navy" style="background:#1a2744;" title="Navy"></button>
+              <button class="color-swatch" data-color="Olive" style="background:#556b2f;" title="Olive"></button>
+              <button class="color-swatch" data-color="Cream" style="background:#f5f0dc;" title="Cream"></button>
+              <button class="color-swatch" data-color="Charcoal" style="background:#444;" title="Charcoal"></button>
+              <button class="color-swatch" data-color="Burgundy" style="background:#722f37;" title="Burgundy"></button>
+            </div>
+          </div>
+
+          <!-- Price Range -->
+          <div class="filter-group">
+            <div class="filter-group__label">Price <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            <div class="price-range-row">
+              <input type="range" class="price-range-input" id="priceRange" min="10" max="100" value="100" step="5">
+              <div class="price-range-labels">
+                <span>£10</span>
+                <span id="priceMax">£100</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div>
+          <div class="shop-controls">
+            <span class="shop-count" id="productCount">24 products</span>
+            <select class="sort-select" id="sortSelect">
+              <option value="newest">Sort: Newest</option>
+              <option value="price-low">Price: Low → High</option>
+              <option value="price-high">Price: High → Low</option>
+              <option value="name">Name: A → Z</option>
+            </select>
+          </div>
+          <div class="active-filters" id="activeFilters"></div>
+          <div class="grid-4" id="productGrid"></div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ NEWSLETTER ════════════ -->
+  <section class="section newsletter">
+    <div class="container">
+      <div class="newsletter__inner reveal">
+        <span class="section-eyebrow">Stay in the Loop</span>
+        <h2 class="display-sm" style="margin-top:12px;">Get 10% Off Your First Order</h2>
+        <p class="body-sm text-muted" style="margin-top:8px;">Join the MERCHNDICE community for exclusive drops and offers.</p>
+        <form class="newsletter__form" id="newsletterForm">
+          <input type="email" class="newsletter__input" placeholder="Enter your email..." required>
+          <button type="submit" class="newsletter__btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">MERCHN<span>DICE</span></div>
+          <p class="footer__desc">Premium streetwear merch for those who dare to stand out.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-btn" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-btn" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Shop</h4>
+          <ul class="footer__links"><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Hoodies</a></li><li><a href="shop.html">T-Shirts</a></li><li><a href="shop.html">Bottoms</a></li><li><a href="shop.html">Accessories</a></li></ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Help</h4>
+          <ul class="footer__links"><li><a href="contact.html">Contact Us</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">FAQs</a></li></ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <ul class="footer__links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 MERCHNDICE. All rights reserved.</p>
+        <div class="footer__payment"><span class="payment-icon">VISA</span><span class="payment-icon">MASTERCARD</span><span class="payment-icon">PAYPAL</span><span class="payment-icon">APPLE PAY</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer__overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer__header">
+      <h3 class="cart-drawer__title">YOUR BAG</h3>
+      <button class="cart-close-btn" id="cartCloseBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="cart-drawer__body"></div>
+    <div class="cart-drawer__footer"></div>
+  </aside>
+
+  <script src="js/shop.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

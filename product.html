@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MERCHNDICE product detail — premium streetwear merch. View sizes, colours and add to your bag.">
+  <title>Product — MERCHNDICE</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="grain">
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">FREE SHIPPING ON ORDERS OVER £50 · NEW DROP JUST LANDED</div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">MERCHN<span>DICE</span></a>
+      <nav class="navbar__nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?cat=new">New In</a>
+        <a href="shop.html?cat=sale">Sale</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="navbar__actions">
+        <div class="currency-switcher" style="display:flex;gap:2px;background:var(--color-surface);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--color-border);">
+          <button class="currency-btn active" data-currency="GBP" onclick="setCurrency('GBP')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">£</button>
+          <button class="currency-btn" data-currency="USD" onclick="setCurrency('USD')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">$</button>
+          <button class="currency-btn" data-currency="NGN" onclick="setCurrency('NGN')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">₦</button>
+        </div>
+        <button class="navbar__icon-btn" data-open-search aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="navbar__icon-btn" data-open-cart aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" style="display:none;">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop All</a>
+    <a href="shop.html?cat=new">New In</a>
+    <a href="shop.html?cat=sale">Sale</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Search Modal -->
+  <div class="modal-overlay" id="searchOverlay">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search for hoodies, tees, caps...">
+      </div>
+      <p class="search-suggestion-label">Popular Searches</p>
+      <div class="search-tags">
+        <span class="search-tag">Hoodies</span>
+        <span class="search-tag">Tracksuits</span>
+        <span class="search-tag">Graphic Tees</span>
+        <span class="search-tag">Caps</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ PRODUCT PAGE ════════════ -->
+  <main class="product-page">
+    <div class="container">
+      <div class="product-layout">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="product-gallery__main" id="pdpMainImg"></div>
+          <div class="product-gallery__thumbs" id="pdpThumbs">
+            <!-- Thumbnails rendered by JS if multiple images exist -->
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <div class="product-info__breadcrumb" id="pdpBreadcrumb">
+            <a href="index.html">Home</a> <span>/</span> <a href="shop.html">Shop</a> <span>/</span> <span>Loading...</span>
+          </div>
+
+          <h1 class="product-info__title" id="pdpTitle">Loading...</h1>
+
+          <div class="product-info__rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-count">(128 reviews)</span>
+          </div>
+
+          <div class="product-info__price-row" id="pdpPrice"></div>
+
+          <hr class="product-info__divider">
+
+          <!-- Size Picker -->
+          <div class="product-info__section-label">
+            Size
+            <span class="size-guide-link">Size Guide</span>
+          </div>
+          <div class="size-picker" id="pdpSizes"></div>
+
+          <!-- Color Picker -->
+          <div class="product-info__section-label">Colour</div>
+          <div class="color-picker" id="pdpColors">
+            <button class="color-btn selected" data-color="Black" style="background:#111;" title="Black" onclick="selectColor(this)"></button>
+            <button class="color-btn" data-color="Grey" style="background:#888;" title="Grey" onclick="selectColor(this)"></button>
+            <button class="color-btn" data-color="Navy" style="background:#1a2744;" title="Navy" onclick="selectColor(this)"></button>
+          </div>
+
+          <!-- CTA -->
+          <div class="product-cta">
+            <button class="btn btn-primary" id="pdpAddToCart">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+              Add to Bag
+            </button>
+            <button class="wishlist-btn" onclick="toggleWishlist(this,'Product')">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+          </div>
+
+          <!-- Guarantees -->
+          <div class="product-guarantees">
+            <div class="guarantee-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span>Free Shipping<br>Over £50</span>
+            </div>
+            <div class="guarantee-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M1 20V14h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+              <span>30-Day<br>Returns</span>
+            </div>
+            <div class="guarantee-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Secure<br>Checkout</span>
+            </div>
+          </div>
+
+          <!-- Accordion -->
+          <div class="accordion">
+            <div class="accordion-item open">
+              <button class="accordion-btn">
+                Description
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="accordion-body">
+                <p>Premium heavyweight cotton construction with a relaxed, oversized fit. Features ribbed cuffs and hem, kangaroo pocket, and an adjustable drawstring hood. Designed for comfort and built to last — perfect for layering or wearing solo.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-btn">
+                Fabric & Care
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="accordion-body">
+                <p>100% premium cotton · 400gsm heavyweight · Pre-shrunk · Machine wash cold · Tumble dry low · Do not iron print directly</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-btn">
+                Shipping & Returns
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="accordion-body">
+                <p>Free standard shipping on orders over £50. Express delivery available. 30-day returns on all full-price items — unworn, with tags attached.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Related Products -->
+      <div class="section" style="padding-top:80px;">
+        <div class="section-header">
+          <div class="section-header__left">
+            <span class="section-eyebrow">You Might Also Like</span>
+            <h2 class="section-title">Related Products</h2>
+          </div>
+          <a href="shop.html" class="btn btn-ghost btn-sm">View All →</a>
+        </div>
+        <div class="grid-4" id="relatedGrid"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">MERCHN<span>DICE</span></div>
+          <p class="footer__desc">Premium streetwear merch for those who dare to stand out.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-btn" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-btn" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg></a>
+          </div>
+        </div>
+        <div><h4 class="footer__col-title">Shop</h4><ul class="footer__links"><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Hoodies</a></li><li><a href="shop.html">T-Shirts</a></li><li><a href="shop.html">Bottoms</a></li><li><a href="shop.html">Accessories</a></li></ul></div>
+        <div><h4 class="footer__col-title">Help</h4><ul class="footer__links"><li><a href="contact.html">Contact Us</a></li><li><a href="#">Shipping Info</a></li><li><a href="#">Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">FAQs</a></li></ul></div>
+        <div><h4 class="footer__col-title">Legal</h4><ul class="footer__links"><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 MERCHNDICE. All rights reserved.</p>
+        <div class="footer__payment"><span class="payment-icon">VISA</span><span class="payment-icon">MASTERCARD</span><span class="payment-icon">PAYPAL</span><span class="payment-icon">APPLE PAY</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer__overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer__header">
+      <h3 class="cart-drawer__title">YOUR BAG</h3>
+      <button class="cart-close-btn" id="cartCloseBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="cart-drawer__body"></div>
+    <div class="cart-drawer__footer"></div>
+  </aside>
+
+  <script src="js/shop.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/product.js"></script>
+</body>
+</html>

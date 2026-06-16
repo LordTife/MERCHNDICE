@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MERCHNDICE — Premium streetwear merch. Bold designs, premium quality. Shop hoodies, tees, tracksuits, caps and accessories.">
+  <title>MERCHNDICE — Premium Streetwear Merch</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="grain">
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar" id="announceBar">FREE SHIPPING ON ORDERS OVER £50 · NEW DROP JUST LANDED</div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">MERCHN<span>DICE</span></a>
+      <nav class="navbar__nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?cat=new">New In</a>
+        <a href="shop.html?cat=sale">Sale</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="navbar__actions">
+        <!-- Currency switcher -->
+        <div class="currency-switcher" style="display:flex;gap:2px;background:var(--color-surface);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--color-border);">
+          <button class="currency-btn active" data-currency="GBP" onclick="setCurrency('GBP')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">£</button>
+          <button class="currency-btn" data-currency="USD" onclick="setCurrency('USD')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">$</button>
+          <button class="currency-btn" data-currency="NGN" onclick="setCurrency('NGN')" style="padding:6px 10px;font-size:0.6875rem;font-weight:700;color:var(--color-muted);cursor:pointer;transition:all 150ms ease;background:transparent;border:none;font-family:inherit;">₦</button>
+        </div>
+        <button class="navbar__icon-btn" data-open-search aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="navbar__icon-btn" data-open-cart aria-label="Cart">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" style="display:none;">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop All</a>
+    <a href="shop.html?cat=new">New In</a>
+    <a href="shop.html?cat=sale">Sale</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Search Modal -->
+  <div class="modal-overlay" id="searchOverlay">
+    <div class="search-modal">
+      <div class="search-input-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search for hoodies, tees, caps...">
+      </div>
+      <p class="search-suggestion-label">Popular Searches</p>
+      <div class="search-tags">
+        <span class="search-tag">Hoodies</span>
+        <span class="search-tag">Tracksuits</span>
+        <span class="search-tag">Graphic Tees</span>
+        <span class="search-tag">Caps</span>
+        <span class="search-tag">Sale</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img class="hero__img" src="assets/images/hero_main.png" alt="MERCHNDICE hero — streetwear model">
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__content">
+      <span class="hero__eyebrow">Summer 2026 Collection</span>
+      <h1 class="hero__title">WEAR<em>YOUR MERCH</em></h1>
+      <p class="hero__desc">Premium streetwear merch designed for those who stand out. Bold designs, heavyweight fabrics, unapologetic style.</p>
+      <div class="hero__actions">
+        <a href="shop.html" class="btn btn-primary btn-lg">Shop New Drops</a>
+        <a href="shop.html?cat=sale" class="btn btn-outline btn-lg">View Sale</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════════ MARQUEE ════════════ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span class="marquee-item">NEW DROP</span>
+      <span class="marquee-item">FREE SHIPPING OVER £50</span>
+      <span class="marquee-item">PREMIUM QUALITY</span>
+      <span class="marquee-item">EXCLUSIVE DESIGNS</span>
+      <span class="marquee-item">STREETWEAR ESSENTIALS</span>
+      <span class="marquee-item">NEW DROP</span>
+      <span class="marquee-item">FREE SHIPPING OVER £50</span>
+      <span class="marquee-item">PREMIUM QUALITY</span>
+      <span class="marquee-item">EXCLUSIVE DESIGNS</span>
+      <span class="marquee-item">STREETWEAR ESSENTIALS</span>
+    </div>
+  </div>
+
+  <!-- ════════════ STATS STRIP ════════════ -->
+  <section class="stats-strip">
+    <div class="stats-strip__inner container">
+      <div class="stat-item reveal">
+        <div class="stat-item__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <span class="stat-num">15K+</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-item__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div>
+        <span class="stat-num">200+</span>
+        <span class="stat-label">Products</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-item__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <span class="stat-num">4.9★</span>
+        <span class="stat-label">Average Rating</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-item__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <span class="stat-num">48HR</span>
+        <span class="stat-label">Fast Delivery</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CATEGORIES ════════════ -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <span class="section-eyebrow">Explore</span>
+          <h2 class="section-title">Shop by Category</h2>
+        </div>
+        <a href="shop.html" class="btn btn-ghost btn-sm">View All →</a>
+      </div>
+      <div class="grid-3">
+        <a href="shop.html" class="cat-card reveal">
+          <img class="cat-card__img" src="assets/images/cat_new_in.png" alt="New In" loading="lazy">
+          <div class="cat-card__overlay">
+            <span class="cat-card__label">Just Dropped</span>
+            <h3 class="cat-card__title">NEW IN</h3>
+            <span class="cat-card__cta">Shop Now <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+        <a href="shop.html" class="cat-card reveal reveal-delay-1">
+          <img class="cat-card__img" src="assets/images/cat_tops.png" alt="Hoodies & Tops" loading="lazy">
+          <div class="cat-card__overlay">
+            <span class="cat-card__label">Best Sellers</span>
+            <h3 class="cat-card__title">HOODIES</h3>
+            <span class="cat-card__cta">Shop Now <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+        <a href="shop.html" class="cat-card reveal reveal-delay-2">
+          <img class="cat-card__img" src="assets/images/cat_bottoms.png" alt="Bottoms" loading="lazy">
+          <div class="cat-card__overlay">
+            <span class="cat-card__label">Essential</span>
+            <h3 class="cat-card__title">BOTTOMS</h3>
+            <span class="cat-card__cta">Shop Now <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ NEW ARRIVALS ════════════ -->
+  <section class="section" id="newArrivals" style="background:var(--color-bg-2);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header__left">
+          <span class="section-eyebrow">Fresh Drops</span>
+          <h2 class="section-title">New Arrivals</h2>
+        </div>
+        <a href="shop.html" class="btn btn-ghost btn-sm">View All →</a>
+      </div>
+      <div class="grid-4 reveal" id="homeProductGrid"></div>
+    </div>
+  </section>
+
+  <!-- ════════════ BRAND STORY ════════════ -->
+  <section class="section brand-story">
+    <div class="container">
+      <div class="brand-story__inner">
+        <div class="brand-story__left reveal">
+          <span class="label brand-story__label">Our Story</span>
+          <h2 class="display-md brand-story__title">Born on the Streets.<br>Made for the Culture.</h2>
+          <p class="brand-story__body">MERCHNDICE isn't just a brand — it's a movement. We started with a simple mission: create premium quality merch that speaks louder than words. Every hoodie, every tee, every piece is designed to make you stand out, crafted with heavyweight fabrics and built to last.</p>
+          <a href="contact.html" class="btn btn-outline">Learn More</a>
+        </div>
+        <div class="brand-story__right reveal reveal-delay-2">
+          <div class="brand-story__img-wrap">
+            <img class="brand-story__img" src="assets/images/cat_new_in.png" alt="MERCHNDICE brand story">
+          </div>
+          <div class="brand-story__card">
+            <div class="brand-story__card-num">2026</div>
+            <div class="brand-story__card-txt">EST. YEAR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ NEWSLETTER ════════════ -->
+  <section class="section newsletter" id="newsletter">
+    <div class="container">
+      <div class="newsletter__inner reveal">
+        <span class="section-eyebrow">Stay in the Loop</span>
+        <h2 class="display-sm" style="margin-top:12px;">Get 10% Off Your First Order</h2>
+        <p class="body-sm text-muted" style="margin-top:8px;">Join the MERCHNDICE community. New drops, exclusive offers, delivered straight to your inbox.</p>
+        <form class="newsletter__form" id="newsletterForm">
+          <input type="email" class="newsletter__input" placeholder="Enter your email..." required>
+          <button type="submit" class="newsletter__btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-logo">MERCHN<span>DICE</span></div>
+          <p class="footer__desc">Premium streetwear merch for those who dare to stand out. Bold designs, heavyweight quality.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-btn" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-btn" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="TikTok"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Shop</h4>
+          <ul class="footer__links">
+            <li><a href="shop.html">All Products</a></li>
+            <li><a href="shop.html">Hoodies</a></li>
+            <li><a href="shop.html">T-Shirts</a></li>
+            <li><a href="shop.html">Bottoms</a></li>
+            <li><a href="shop.html">Accessories</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Help</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Legal</h4>
+          <ul class="footer__links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 MERCHNDICE. All rights reserved.</p>
+        <div class="footer__payment">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MASTERCARD</span>
+          <span class="payment-icon">PAYPAL</span>
+          <span class="payment-icon">APPLE PAY</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer__overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer__header">
+      <h3 class="cart-drawer__title">YOUR BAG</h3>
+      <button class="cart-close-btn" id="cartCloseBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="cart-drawer__body"></div>
+    <div class="cart-drawer__footer"></div>
+  </aside>
+
+  <script src="js/shop.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Render 8 newest products on homepage
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCurrencySelector();
+      const grid = document.getElementById('homeProductGrid');
+      if (grid && window.PRODUCTS) {
+        const featured = window.PRODUCTS.filter(p => p.badge === 'new' || p.badge === 'hot').slice(0, 8);
+        if (featured.length < 8) {
+          const extra = window.PRODUCTS.filter(p => !featured.includes(p)).slice(0, 8 - featured.length);
+          featured.push(...extra);
+        }
+        grid.innerHTML = featured.slice(0, 8).map(p => productCardHTML(p)).join('');
+      }
+      // Currency buttons
+      document.querySelectorAll('.currency-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setCurrency(btn.dataset.currency);
+          // Re-render homepage grid
+          const grid = document.getElementById('homeProductGrid');
+          if (grid && window.PRODUCTS) {
+            const featured = window.PRODUCTS.filter(p => p.badge === 'new' || p.badge === 'hot').slice(0, 8);
+            if (featured.length < 8) {
+              const extra = window.PRODUCTS.filter(p => !featured.includes(p)).slice(0, 8 - featured.length);
+              featured.push(...extra);
+            }
+            grid.innerHTML = featured.slice(0, 8).map(p => productCardHTML(p)).join('');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
